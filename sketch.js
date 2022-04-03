@@ -69,9 +69,7 @@ function draw() {
         x = p['x']
         y = p['y']
         x = Math.round(x + 300)
-        console.log(x)
         y = Math.round(y + 300)
-        console.log(y)
         stroke(p['color']);
         point(x, y);
       }
