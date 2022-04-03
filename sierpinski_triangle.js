@@ -5,9 +5,9 @@ function get_sierpinski_triangle_attractors() {
   vs = [v_1, v_2, v_3];
 
   let attractors = 
-    [{"point": vs[0], "compression_ratio": 0.5, "probability": 1.0 / 3.0}, 
-     {"point": vs[1], "compression_ratio": 0.5, "probability": 1.0 / 3.0}, 
-     {"point": vs[2], "compression_ratio": 0.5, "probability": 1.0 / 3.0}];
+    [{"point": vs[0], "compression_ratio": 0.5, "probability": 1.0 / 3.0, "color": "red"}, 
+     {"point": vs[1], "compression_ratio": 0.5, "probability": 1.0 / 3.0, "color": "yellow"}, 
+     {"point": vs[2], "compression_ratio": 0.5, "probability": 1.0 / 3.0, "color": "blue"}];
 
   return attractors;
 }

@@ -10,11 +10,11 @@ function w(x, attractor) {
 function ifsp(attractors, n) {
     xs = new Array(n).fill(0);
     ys = new Array(n).fill(0);
+    points = new Array(n)
     x = attractors[0]['point'];
     m = attractors.length;
     for (i = 0; i < n; i++) {
-        xs[i] = x[0];
-        ys[i] = x[1];
+        p = {}
         prob_sum = 0.0;
         attractor_index = null;
         r = Math.random();
@@ -26,8 +26,13 @@ function ifsp(attractors, n) {
                 break;
             }
         }
-        x = w(x, attractors[attractor_index]);
+        attractor = attractors[attractor_index]
+        x = w(x, attractor);
+        p['color'] = attractor['color'];
+        p['x'] = x[0]; 
+        p['y'] = x[1]
+        points[i] = p;
       }
      
-     return [xs.slice(20), ys.slice(20)];
+     return points.slice(20);
   }
