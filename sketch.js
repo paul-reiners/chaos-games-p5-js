@@ -8,6 +8,7 @@ function setup() {
   sel.option('Sierpiński triangle');
   sel.option('Twin dragon');
   sel.option('Sierpiński hexagon');
+  sel.option('Sierpiński pentagon');
   sel.selected('Sierpiński triangle');
   sel.changed(mySelectEvent);
   let s = 'Programmed by Paul Reiners';
@@ -25,6 +26,9 @@ function mySelectEvent() {
     y_offset = 0.5;
   } else if (item === 'Sierpiński hexagon') {
     attractors = get_sierpinski_hexagon_attractors();
+    y_offset = 1.0;
+  } else if (item === 'Sierpiński pentagon') {
+    attractors = get_sierpinski_pentagon_attractors();
     y_offset = 1.0;
   } else {
     y_offset = 1.0;
@@ -60,7 +64,9 @@ function draw() {
       for (i = 0; i < result.length; i++) {
         p = result[i]
         x = Math.round(200 * (p['x'] + 1.0))
+        console.log(x)
         y = Math.round(200 * (p['y'] + y_offset))
+        console.log(y)
         stroke(p['color']);
         point(x, y);
     }
