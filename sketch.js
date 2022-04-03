@@ -42,14 +42,17 @@ function draw() {
 
       for (i = 0; i < n; i++) {
         r = Math.random()
+        color = '';
         if (r < 0.5) {
               x = w_1(x)
+              color = 'red'
         } else {
               x = w_2(x)
+              color = 'blue'
         }
         p_x = Math.round(200 * (x[0] + 1.0))
         p_y = Math.round(200 * (x[1] + y_offset))
-        stroke('purple');
+        stroke(color);
         point(p_x, p_y);
       }
     } else {
