@@ -29,12 +29,12 @@ function mySelectEvent() {
   } else {
     y_offset = 1.0;
   }
+  let s = 'Programmed by Paul Reiners';
+  stroke('black');
+  text(s, 10, 540, 280, 80);
 }
 
 function draw() {
-  stroke['black']
-  let s = 'Programmed by Paul Reiners';
-  text(s, 10, 540, 280, 80);
     n = 1000;
     let item = sel.value();
     if (item === 'Twin dragon') {
