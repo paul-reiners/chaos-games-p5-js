@@ -1,9 +1,15 @@
 function w(x, attractor) {
     let compression_ratio = attractor.compression_ratio;
-    
+
     if ('rotation' in attractor) {
-        let dx = (compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0]) - x[0];
-        let dy = (compression_ratio * x[1] + (1.0 - compression_ratio) * attractor['point'][1]) - x[1];
+        let unrotated_new_x = 
+          compression_ratio * x[0] + 
+            (1.0 - compression_ratio) * attractor['point'][0];
+        let unrotated_new_y = 
+          compression_ratio * x[1] + 
+            (1.0 - compression_ratio) * attractor['point'][1];
+        let dx = attractor['point'][0] - unrotated_new_x;
+        let dy = attractor['point'][1] - unrotated_new_y;
         let d = Math.sqrt(dx**2 + dy**2);
         let theta_1 = Math.atan(dy / dx);
         let theta_2 = attractor['rotation'] * Math.PI / 180.0;
@@ -11,14 +17,14 @@ function w(x, attractor) {
         let new_dx = d * Math.cos(theta);
         let new_dy = d * Math.sin(theta);
 
-        return [x[0] + new_dx, x[1] + new_dy];
-
+        return [attractor['point'][0] + new_dx, attractor['point'][1] + new_dy];
     } else {
-        return [compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0], 
-                compression_ratio * x[1] + (1.0 - compression_ratio) * attractor['point'][1]];
+        return [compression_ratio * x[0] + 
+                  (1.0 - compression_ratio) * attractor['point'][0], 
+                compression_ratio * x[1] + 
+                  (1.0 - compression_ratio) * attractor['point'][1]];
     }
 }
-
 
 
 function ifsp(attractors, n) {
