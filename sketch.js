@@ -63,7 +63,7 @@ function draw() {
         point(p_x, p_y);
       }
     } else if (item === 'Sierpiński carpet') {
-      result = get_sierpinski_carpet_attractors(attractors, n);
+      result = get_sierpinski_carpet_attractors(n);
       for (i = 0; i < result.length; i++) {
         p = result[i]
         x = p['x']
