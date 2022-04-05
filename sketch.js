@@ -33,6 +33,7 @@ function mySelectEvent() {
     y_offset = 1.0;
   } else if (item === 'Sierpiński carpet') {
     attractors = get_sierpinski_carpet_attractors();
+    y_offset = 1.0;
   } else {
     y_offset = 1.0;
   }
@@ -62,23 +63,39 @@ function draw() {
         stroke(color);
         point(p_x, p_y);
       }
-    } else if (item === 'Sierpiński carpet') {
-      result = get_sierpinski_carpet_attractors(n);
-      for (i = 0; i < result.length; i++) {
-        p = result[i]
-        x = p['x']
-        y = p['y']
-        x = Math.round(x + 300)
-        y = Math.round(y + 300)
-        stroke(p['color']);
-        point(x, y);
-      }
     } else {
+      min_x = Number.POSITIVE_INFINITY;
+      max_x = Number.NEGATIVE_INFINITY;
+      min_y = Number.POSITIVE_INFINITY;
+      max_y = Number.NEGATIVE_INFINITY;
       result = ifsp(attractors, n);
       for (i = 0; i < result.length; i++) {
-        p = result[i]
-        x = Math.round(200 * (p['x'] + 1.0))
-        y = Math.round(200 * (p['y'] + y_offset))
+        p = result[i];
+        x = p['x'];
+        if (x > max_x) {
+          max_x = x;
+        }
+        if (x < min_x) {
+          min_x = x;
+        }
+        y = p['y'];
+        if (y > max_y) {
+          max_y = y;
+        }
+        if (y < min_y) {
+          min_y = y;
+        }
+      }
+      d_x = max_x - min_x;
+      scale_x = 600 / d_x;
+      d_y = max_y - min_y;
+      scale_y = 600 / d_y;
+      x_offset = -min_x;
+      y_offset = -min_y;
+      for (i = 0; i < result.length; i++) {
+        p = result[i];
+        x = Math.round(scale_x * (p['x'] + x_offset));
+        y = Math.round(scale_y * (p['y'] + y_offset));
         stroke(p['color']);
         point(x, y);
     }
