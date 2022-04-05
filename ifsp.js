@@ -8,8 +8,8 @@ function w(x, attractor) {
         let unrotated_new_y = 
           compression_ratio * x[1] + 
             (1.0 - compression_ratio) * attractor['point'][1];
-        let dx = attractor['point'][0] - unrotated_new_x;
-        let dy = attractor['point'][1] - unrotated_new_y;
+        let dx = unrotated_new_x - attractor['point'][0];
+        let dy = unrotated_new_y - attractor['point'][1];
         let d = Math.sqrt(dx**2 + dy**2);
         let theta_1 = Math.atan2(dy, dx);
         let theta_2 = attractor['rotation'] * Math.PI / 180.0;
