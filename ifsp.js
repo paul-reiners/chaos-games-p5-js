@@ -11,7 +11,7 @@ function w(x, attractor) {
         let dx = attractor['point'][0] - unrotated_new_x;
         let dy = attractor['point'][1] - unrotated_new_y;
         let d = Math.sqrt(dx**2 + dy**2);
-        let theta_1 = Math.atan(dy / dx);
+        let theta_1 = Math.atan2(dy, dx);
         let theta_2 = attractor['rotation'] * Math.PI / 180.0;
         let theta = theta_1 + theta_2;
         let new_dx = d * Math.cos(theta);
