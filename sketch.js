@@ -2,7 +2,7 @@ function setup() {
   createCanvas(700, 600);
 
   textAlign(CENTER);
-  // background(200);
+  background(200);
   sel = createSelect();
   sel.position(10, 10);
   sel.option('Sierpiński triangle');
@@ -23,7 +23,7 @@ var y_offset = 0.5;
 
 function mySelectEvent() {
   let item = sel.value();
-  // background(200);
+  background(200);
   if (item === 'Sierpiński triangle') {
     attractors = get_sierpinski_triangle_attractors();
     y_offset = 0.5;
@@ -61,6 +61,7 @@ function createRotationButton() {
 
 function rotateMe() {
   clear();
+  background(200);
   const rotation = parseFloat(input.value());
   attractors[0]['rotation'] = rotation;
 }
@@ -124,5 +125,4 @@ function draw() {
         point(x, y);
     }
   }
-  // createRotationButton();
 }
