@@ -1,5 +1,5 @@
 function w(x, attractor) {
-    let compression_ratio = attractor.compression_ratio;
+    let compression_ratio = attractor['compression_ratio'];
 
     if (!attractor.hasOwnProperty('rotation')) {
         attractor['rotation'] = 0

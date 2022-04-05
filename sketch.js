@@ -10,6 +10,7 @@ function setup() {
   sel.option('Sierpiński hexagon');
   sel.option('Sierpiński pentagon');
   sel.option('Sierpiński carpet');
+  sel.option('Koch curve');
   sel.selected('Sierpiński triangle');
   sel.changed(mySelectEvent);
   let s = 'Programmed by Paul Reiners';
@@ -19,25 +20,20 @@ function setup() {
 }
 
 var attractors = get_sierpinski_triangle_attractors();
-var y_offset = 0.5;
 
 function mySelectEvent() {
   let item = sel.value();
   background(200);
   if (item === 'Sierpiński triangle') {
     attractors = get_sierpinski_triangle_attractors();
-    y_offset = 0.5;
   } else if (item === 'Sierpiński hexagon') {
     attractors = get_sierpinski_hexagon_attractors();
-    y_offset = 1.1;
   } else if (item === 'Sierpiński pentagon') {
     attractors = get_sierpinski_pentagon_attractors();
-    y_offset = 1.0;
   } else if (item === 'Sierpiński carpet') {
     attractors = get_sierpinski_carpet_attractors();
-    y_offset = 1.0;
-  } else {
-    y_offset = 1.0;
+  } else if (item === 'Koch curve') {
+    attractors = get_koch_curve_attractors();
   }
   let s = 'Programmed by Paul Reiners';
   stroke('black');
@@ -56,7 +52,6 @@ function createRotationButton() {
   rotateMe.position(600, 5);
 
   textAlign(CENTER);
-  textSize(50);
 }
 
 function rotateMe() {

@@ -11,5 +11,5 @@ function get_koch_curve_attractors() {
       attractors[i] = {'point': v, 'compression_ratio': compression_ratio, 'probability': 1.0 / n, 'color': palette[i], 'rotation': rotations[i]};
   }
   
-  return ifsp(attractors, 100);
+  return attractors;
 }
