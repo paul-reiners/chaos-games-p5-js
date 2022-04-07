@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(700, 600);
+  createCanvas(800, 600);
 
   textAlign(CENTER);
   background(200);
@@ -16,10 +16,12 @@ function setup() {
   let s = 'Programmed by Paul Reiners';
   text(s, 10, 540, 280, 80);
 
-    createRotationButton();
+  createInputElements();
+  createRotationButton();
 }
 
 var attractors = get_sierpinski_triangle_attractors();
+var rotationElements = []
 
 function mySelectEvent() {
   let item = sel.value();
@@ -40,12 +42,20 @@ function mySelectEvent() {
   text(s, 10, 540, 280, 80);
 }
 
-function createRotationButton() {
-  input = createInput();
-  input.position(600, 65);
+function createInputElements() {
+  y_pos = 65;
+  for (i = 0; i < 3; i++) {
+    let input = createInput();
+    input.position(600, y_pos);
+    rotationElements.push(input);
 
+    y_pos += 20;
+  }
+}
+
+function createRotationButton() {
   button = createButton('submit');
-  button.position(input.x + input.width, 65);
+  button.position(rotationElements[0].x + rotationElements[0].width, 200);
   button.mousePressed(rotateMe);
 
   rotateMe = createElement('h2', 'Rotation?');
@@ -57,8 +67,10 @@ function createRotationButton() {
 function rotateMe() {
   clear();
   background(200);
-  const rotation = parseFloat(input.value());
-  attractors[0]['rotation'] = rotation;
+  for (var i = 0; i < 3; i++) {
+    const rotation = parseFloat(rotationElements[i].value());
+    attractors[i]['rotation'] = rotation;
+  }
 }
 
 
