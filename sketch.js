@@ -45,7 +45,7 @@ function mySelectEvent() {
 function createInputElements() {
   y_pos = 65;
   for (i = 0; i < 3; i++) {
-    let input = createInput();
+    let input = createInput("0");
     input.position(600, y_pos);
     rotationElements.push(input);
 
@@ -54,8 +54,8 @@ function createInputElements() {
 }
 
 function createRotationButton() {
-  button = createButton('submit');
-  button.position(rotationElements[0].x + rotationElements[0].width, 200);
+  button = createButton('rotate');
+  button.position(rotationElements[0].x, 125);
   button.mousePressed(rotateMe);
 
   rotateMe = createElement('h2', 'Rotation?');
